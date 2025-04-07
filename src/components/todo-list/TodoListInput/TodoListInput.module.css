@@ -1,0 +1,25 @@
+.form {
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    padding: 0 0 0 16px;
+
+    .content {
+        height: 44px;
+        flex: 1;
+        border: none;
+        outline: none;
+    }
+
+    .submit {
+        background: rgba(160, 118, 241, 0.8);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        width: 80px;
+        border: none;
+        cursor: pointer;
+        border-radius: 40px 4px 4px 20px;
+    }
+}
