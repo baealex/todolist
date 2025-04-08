@@ -76,20 +76,22 @@ describe('TodoListItems', () => {
 
     it('changes order of items.', async () => {
       const mockDrop = jest.fn();
+      const item2 = createTodoItem({
+        content: 'Item 2',
+      });
+      const item4 = createTodoItem({
+        content: 'Item 4',
+      });
       renderTodoListItems({
         items: [
           createTodoItem({
             content: 'Item 1',
           }),
-          createTodoItem({
-            content: 'Item 2',
-          }),
+          item2,
           createTodoItem({
             content: 'Item 3',
           }),
-          createTodoItem({
-            content: 'Item 4',
-          }),
+          item4,
         ],
         dndFeature: {
           onDrop: mockDrop,
@@ -102,7 +104,7 @@ describe('TodoListItems', () => {
       fireEvent.mouseMove(item4Handler, item2Position);
       fireEvent.mouseUp(item4Handler);
 
-      expect(mockDrop).toHaveBeenCalledWith(3, 1);
+      expect(mockDrop).toHaveBeenCalledWith(item4.id, item2.id);
     });
   });
 });

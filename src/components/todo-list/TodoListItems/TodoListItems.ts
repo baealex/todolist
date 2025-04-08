@@ -9,7 +9,7 @@ export interface TodoListItemsProps {
   items: TodoItemInterface[];
   onComplete: (id: string) => void;
   dndFeature?: {
-    onDrop: (startIndex: number, endIndex: number) => void;
+    onDrop: (startId: string, endId: string) => void;
   };
 }
 
@@ -19,11 +19,6 @@ export class TodoListItems extends Component<TodoListItemsProps> {
 
   constructor($el: HTMLElement, props: TodoListItemsProps) {
     super($el, props);
-    if (props.dndFeature) {
-      this.dnd = new DragAndDrop({
-        onDrop: props.dndFeature.onDrop,
-      });
-    }
   }
 
   handleItemComplete = (e: MouseEvent) => {
@@ -38,7 +33,14 @@ export class TodoListItems extends Component<TodoListItemsProps> {
   };
 
   mount(): void {
-    if (this.dnd) {
+    if (this.props.dndFeature) {
+      this.dnd = new DragAndDrop({
+        onDrop: (startIndex, endIndex) => {
+          const startId = this.props.items[startIndex].id;
+          const endId = this.props.items[endIndex].id;
+          this.props.dndFeature?.onDrop(startId, endId);
+        },
+      });
       this.dnd.draggable(`.${style.item}`);
       this.dnd.dropzone(`.${style['todo-items']}`);
       this.dnd.enable();
@@ -81,7 +83,7 @@ export class TodoListItems extends Component<TodoListItemsProps> {
                       </div>
                     </label>
                     ${
-                      this.dnd
+                      this.props.dndFeature
                         ? `
                           <div class="drag-handler ${style['drag-handler']}" role="button" aria-label="Drag and Drop">
                             <svg

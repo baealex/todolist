@@ -105,7 +105,7 @@ describe('TodoStore', () => {
     todoStore.addItem({ content: 'test' });
     todoStore.addItem({ content: 'test2' });
 
-    todoStore.changeItemsOrder(0, 1);
+    todoStore.changeItemsOrder(todoStore.state.items[0].id, todoStore.state.items[1].id);
 
     expect(todoStore.state.items[0].content).toBe('test');
     expect(todoStore.state.items[1].content).toBe('test2');

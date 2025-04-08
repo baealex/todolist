@@ -75,7 +75,14 @@ class TodoStore extends Store<TodoStoreState> {
     return [...items].sort((a, b) => (a.isCompleted === b.isCompleted ? 0 : a.isCompleted ? 1 : -1));
   };
 
-  changeItemsOrder = (startIndex: number, endIndex: number) => {
+  changeItemsOrder = (startId: string, endId: string) => {
+    const startIndex = this.state.items.findIndex((item) => item.id === startId);
+    const endIndex = this.state.items.findIndex((item) => item.id === endId);
+
+    if (startIndex === -1 || endIndex === -1) {
+      return;
+    }
+
     this.set({
       items: this.sortItemsByIsCompleted(arrayMove(this.state.items, startIndex, endIndex)),
     });
