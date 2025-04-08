@@ -13,7 +13,7 @@ describe('TodoStore', () => {
 
     todoStore.addItem({ content: 'test' });
 
-    expect(todoStore.state.items.length).toBe(1);
+    expect(todoStore.state.items).toHaveLength(1);
   });
 
   it('append item to the top of the list', () => {
@@ -31,7 +31,7 @@ describe('TodoStore', () => {
 
     todoStore.complete(todoStore.state.items[0].id);
 
-    expect(todoStore.state.items[0].isCompleted).toBe(true);
+    expect(todoStore.state.items[0].isCompleted).toBeTruthy();
   });
 
   it('change order when item completed', () => {
@@ -63,7 +63,7 @@ describe('TodoStore', () => {
       filterType: 'all',
     });
 
-    expect(todoStore.getFilteredItems().length).toBe(2);
+    expect(todoStore.getFilteredItems()).toHaveLength(2);
   });
 
   it('gets filtered items by completed', () => {
@@ -75,7 +75,7 @@ describe('TodoStore', () => {
       filterType: 'completed',
     });
 
-    expect(todoStore.getFilteredItems().length).toBe(1);
+    expect(todoStore.getFilteredItems()).toHaveLength(1);
     expect(todoStore.getFilteredItems()[0].content).toBe('test2');
   });
 
@@ -88,7 +88,7 @@ describe('TodoStore', () => {
       filterType: 'active',
     });
 
-    expect(todoStore.getFilteredItems().length).toBe(1);
+    expect(todoStore.getFilteredItems()).toHaveLength(1);
     expect(todoStore.getFilteredItems()[0].content).toBe('test');
   });
 
@@ -98,7 +98,7 @@ describe('TodoStore', () => {
 
     todoStore.clearCompletedItems();
 
-    expect(todoStore.state.items.length).toBe(0);
+    expect(todoStore.state.items).toHaveLength(0);
   });
 
   it('changes items order', () => {

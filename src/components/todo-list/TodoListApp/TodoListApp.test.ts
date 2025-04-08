@@ -28,7 +28,7 @@ describe('TodoListApp', () => {
     const input = screen.getByRole('textbox');
     await userEvent.type(input, 'test{enter}');
 
-    expect(todoStore.state.items.length).toBe(1);
+    expect(todoStore.state.items).toHaveLength(1);
   });
 
   it('completes an item', async () => {
@@ -39,7 +39,7 @@ describe('TodoListApp', () => {
     const checkbox = screen.getByText('test');
     await userEvent.click(checkbox);
 
-    expect(todoStore.state.items[0].isCompleted).toBe(true);
+    expect(todoStore.state.items[0].isCompleted).toBeTruthy();
   });
 
   it('filters items', async () => {
@@ -61,6 +61,6 @@ describe('TodoListApp', () => {
     const clearButton = screen.getByText('Clear completed (1)');
     await userEvent.click(clearButton);
 
-    expect(todoStore.state.items.length).toBe(0);
+    expect(todoStore.state.items).toHaveLength(0);
   });
 });
