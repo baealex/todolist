@@ -81,7 +81,7 @@ class TodoStore extends Store<TodoStoreState> {
     });
   };
 
-  clearCompetedItems = () => {
+  clearCompletedItems = () => {
     this.set({
       items: this.state.items.filter((item) => !item.isCompleted),
     });

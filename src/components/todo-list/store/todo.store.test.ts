@@ -96,7 +96,7 @@ describe('TodoStore', () => {
     todoStore.addItem({ content: 'test' });
     todoStore.complete(todoStore.state.items[0].id);
 
-    todoStore.clearCompetedItems();
+    todoStore.clearCompletedItems();
 
     expect(todoStore.state.items.length).toBe(0);
   });

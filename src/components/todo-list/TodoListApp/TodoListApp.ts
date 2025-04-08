@@ -93,7 +93,7 @@ export class TodoListApp extends Component<Pick<TodoListAppProps, 'useDnd'>> {
         todoStore.set({
           filterType,
         }),
-      onClear: todoStore.clearCompetedItems,
+      onClear: todoStore.clearCompletedItems,
     };
   };
 
