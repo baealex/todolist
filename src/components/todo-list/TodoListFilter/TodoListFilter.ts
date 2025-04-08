@@ -33,8 +33,9 @@ const filterTypes: {
 export class TodoListFilter extends Component<TodoListFilterProps> {
   handleFilterItems = (e: MouseEvent) => {
     const target = e.target as HTMLInputElement;
+    if (!target) return;
 
-    if (target && target.dataset['type'] === 'filter') {
+    if (target.dataset['type'] === 'filter') {
       const value = target.dataset['value'] as FilterType;
       if (value) {
         this.props.onFilter(value);
@@ -44,8 +45,9 @@ export class TodoListFilter extends Component<TodoListFilterProps> {
 
   handleClearItems = (e: MouseEvent) => {
     const target = e.target as HTMLInputElement;
+    if (!target) return;
 
-    if (target && target.dataset['type'] === 'clear') {
+    if (target.dataset['type'] === 'clear') {
       this.props.onClear();
     }
   };
