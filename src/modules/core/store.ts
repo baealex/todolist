@@ -43,12 +43,11 @@ export default class Store<T> {
     return new Promise((resolve) => {
       this.beforeStateChange();
 
-      let newState: any = nextState;
       const prevState = this._states[this._states.length - 1];
 
-      newState = Object.freeze({
+      const newState = Object.freeze({
         ...prevState,
-        ...newState,
+        ...nextState,
       });
 
       const diffStates = diff(prevState, newState) as (keyof T)[];
