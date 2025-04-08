@@ -4,58 +4,12 @@ import { TodoListItems, TodoListItemsProps } from '../TodoListItems';
 import { TodoListFilter, TodoListFilterProps } from '../TodoListFilter';
 import { FilterType, todoStore } from '../store/todo.store';
 
+import './style.css';
+
 export interface TodoListAppProps {
   el: HTMLElement;
   useDnd?: boolean;
 }
-
-const style = `
-  html, body {
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    font-size: 16px;
-  }
-
-  * {
-    font-size: inherit;
-    font-family: 'Noto Sans KR', sans-serif;
-  }
-
-  *,
-  *:after,
-  *:before {
-    box-sizing: border-box;
-  }
-
-  body {
-    background: #f5f5f5;
-  }
-
-  .container {
-    margin: 0 auto;
-    width: 720px;
-    max-width: 100%;
-    padding: 16px 0;
-  }
-
-  .p-16 {
-    padding: 16px;
-  }
-
-  .card {
-    overflow: hidden;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
-  }
-
-  .drag-target {
-    opacity: 0.4;
-  }
-`;
 
 export class TodoListApp extends Component<Pick<TodoListAppProps, 'useDnd'>> {
   key?: string;
@@ -124,7 +78,6 @@ export class TodoListApp extends Component<Pick<TodoListAppProps, 'useDnd'>> {
 
   template() {
     return `
-      <style>${style}</style>
       <div class="container">
         <div class="card">
           <div class="p-16">
