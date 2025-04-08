@@ -28,13 +28,12 @@ export class TodoListItems extends Component<TodoListItemsProps> {
 
   handleItemComplete = (e: MouseEvent) => {
     const target = e.target as HTMLInputElement;
+    if (!target) return;
 
-    if (target) {
-      const id = target.dataset['id'];
-      if (id) {
-        e.preventDefault();
-        this.props.onComplete(id);
-      }
+    const id = target.dataset['id'];
+    if (id) {
+      e.preventDefault();
+      this.props.onComplete(id);
     }
   };
 
