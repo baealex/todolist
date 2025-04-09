@@ -1,7 +1,7 @@
 import { diff } from '../object';
 import { createUUID } from '../uuid';
 
-export default class Component<T> {
+export default abstract class Component<T> {
   $el: HTMLElement;
   props: T;
   _prevProps: T;
@@ -28,13 +28,9 @@ export default class Component<T> {
     return this.$el.querySelector(selector) as K;
   }
 
-  mount() {}
-
-  unmount() {}
-
-  template() {
-    return '';
-  }
+  abstract mount(): void;
+  abstract unmount(): void;
+  abstract template(): string;
 
   render(skipDOMUpdate = false) {
     window.requestAnimationFrame(() => {
