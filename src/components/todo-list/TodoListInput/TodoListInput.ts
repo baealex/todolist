@@ -11,12 +11,15 @@ export class TodoListInput extends Component<TodoListInputProps> {
 
   handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
+
     const target = e.target as HTMLFormElement;
     const content = target.elements.namedItem('content') as HTMLInputElement;
-    const value = content?.value;
+    const value = content?.value.trim();
+
     if (!value) return;
 
     content.value = '';
+
     this.props.onSubmit({ content: value });
   };
 
