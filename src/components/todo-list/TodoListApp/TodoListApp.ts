@@ -4,8 +4,6 @@ import { TodoListItems, TodoListItemsProps } from '../TodoListItems';
 import { TodoListFilter, TodoListFilterProps } from '../TodoListFilter';
 import { FilterType, todoStore } from '../store/todo.store';
 
-import './style.css';
-
 export interface TodoListAppProps {
   el: HTMLElement;
   useDnd?: boolean;
