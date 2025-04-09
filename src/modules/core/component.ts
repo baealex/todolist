@@ -20,7 +20,7 @@ export default abstract class Component<T> {
     this._prevProps = this.props;
 
     if (this._isMounted) {
-      this.render(diffProps.length === 0);
+      this.render(diffProps.length > 0);
     }
   }
 
@@ -32,14 +32,14 @@ export default abstract class Component<T> {
   abstract unmount(): void;
   abstract template(): string;
 
-  render(skipDOMUpdate = false) {
+  render(shouldUpdateDOM = true) {
     window.requestAnimationFrame(() => {
       if (this._isMounted) {
         this.unmount();
       } else {
         this._isMounted = true;
       }
-      if (!skipDOMUpdate) {
+      if (shouldUpdateDOM) {
         const newTemplate = this.template();
         if (this.$el.innerHTML !== newTemplate) {
           this.$el.innerHTML = newTemplate;
