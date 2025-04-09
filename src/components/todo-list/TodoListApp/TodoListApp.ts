@@ -1,8 +1,10 @@
 import Component from '~/modules/core/component';
+
 import { TodoListInput } from '../TodoListInput';
 import { TodoListItems, TodoListItemsProps } from '../TodoListItems';
 import { TodoListFilter, TodoListFilterProps } from '../TodoListFilter';
-import { FilterType, todoStore } from '../store/todo.store';
+import { todoStore } from '../store/todo.store';
+import { FilterType } from '../constants/filter-type';
 
 export interface TodoListAppProps {
   el: HTMLElement;
