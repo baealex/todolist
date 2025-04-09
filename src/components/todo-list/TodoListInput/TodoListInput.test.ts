@@ -51,4 +51,18 @@ describe('TodoListInput', () => {
 
     expect(mockSubmit).not.toHaveBeenCalled();
   });
+
+  it('cannot be add item when the content is blank.', async () => {
+    const mockSubmit = jest.fn();
+    renderTodoListInput({
+      onSubmit: mockSubmit,
+    });
+
+    const input = screen.getByRole('textbox');
+    await userEvent.type(input, '{space}{space}{space}');
+    const button = screen.getByRole('button');
+    await userEvent.click(button);
+
+    expect(mockSubmit).not.toHaveBeenCalled();
+  });
 });
