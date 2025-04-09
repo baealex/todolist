@@ -24,7 +24,7 @@ export class TodoListInput extends Component<TodoListInputProps> {
   };
 
   mount(): void {
-    this.$form = this.useSelector('form')!;
+    this.$form = this.useSelector('form');
     this.$form.addEventListener('submit', this.handleSubmit.bind(this));
   }
 

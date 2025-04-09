@@ -45,16 +45,16 @@ export class TodoListApp extends Component<Pick<TodoListAppProps, 'useDnd'>> {
   });
 
   mount() {
-    const todoListItems = new TodoListItems(this.useSelector(this.listWrapper.selector)!, this.getTodoListItemsProps());
+    const todoListItems = new TodoListItems(this.useSelector(this.listWrapper.selector), this.getTodoListItemsProps());
     todoListItems.render();
 
-    const todoListInput = new TodoListInput(this.useSelector(this.inputWrapper.selector)!, {
+    const todoListInput = new TodoListInput(this.useSelector(this.inputWrapper.selector), {
       onSubmit: todoStore.addItem,
     });
     todoListInput.render();
 
     const todoListFilter = new TodoListFilter(
-      this.useSelector(this.filterWrapper.selector)!,
+      this.useSelector(this.filterWrapper.selector),
       this.getTodoListFilterProps()
     );
     todoListFilter.render();
