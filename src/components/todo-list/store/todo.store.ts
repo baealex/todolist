@@ -1,10 +1,9 @@
 import Store from '~/modules/core/store';
 import { createUUID } from '~/modules/uuid';
-
-import { TodoItemInterface } from '../models/todo-item.model';
 import { arrayMove } from '~/modules/array';
 
-export type FilterType = 'all' | 'active' | 'completed';
+import { FilterType } from '../constants/filter-type';
+import { TodoItemInterface } from '../models/todo-item.model';
 
 interface TodoStoreState {
   items: TodoItemInterface[];

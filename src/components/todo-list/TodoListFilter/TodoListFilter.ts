@@ -1,6 +1,6 @@
 import Component from '~/modules/core/component';
 
-import { FilterType } from '../store/todo.store';
+import { FILTER_TYPE, FilterType } from '../constants/filter-type';
 
 import style from './TodoListFilter.module.css';
 
@@ -18,15 +18,15 @@ const filterTypes: {
 }[] = [
   {
     label: 'All',
-    value: 'all',
+    value: FILTER_TYPE.ALL,
   },
   {
     label: 'Active',
-    value: 'active',
+    value: FILTER_TYPE.ACTIVE,
   },
   {
     label: 'Completed',
-    value: 'completed',
+    value: FILTER_TYPE.COMPLETED,
   },
 ];
 
