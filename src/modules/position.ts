@@ -11,5 +11,8 @@ interface Rect {
 }
 
 export const isInRect = (position: Position, rect: Rect) => {
-  return rect.left <= position.x && rect.right >= position.x && rect.top <= position.y && rect.bottom >= position.y;
+  const withinX = rect.left <= position.x && position.x <= rect.right;
+  const withinY = rect.top <= position.y && position.y <= rect.bottom;
+
+  return withinX && withinY;
 };
