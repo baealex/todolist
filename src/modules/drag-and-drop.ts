@@ -90,9 +90,9 @@ class MirrorElement {
       pointerEvents: 'none',
       position: 'fixed',
       opacity: '0.8',
-      width: target.getBoundingClientRect().width + 'px',
-      top: target.getBoundingClientRect().top + 'px',
-      left: target.getBoundingClientRect().left + 'px',
+      width: `${target.getBoundingClientRect().width}px`,
+      top: `${target.getBoundingClientRect().top}px`,
+      left: `${target.getBoundingClientRect().left}px`,
     });
   }
 
