@@ -23,33 +23,28 @@ export class TodoListApp extends Component<Pick<TodoListAppProps, 'useDnd'>> {
   }
 
   getTodoListItemsProps = (): TodoListItemsProps => {
+    const baseProps: TodoListItemsProps = {
+      items: todoStore.getFilteredItems(),
+      onComplete: todoStore.complete,
+    };
     if (this.props.useDnd) {
       return {
-        items: todoStore.getFilteredItems(),
-        onComplete: todoStore.complete,
+        ...baseProps,
         dndFeature: {
           onDrop: todoStore.changeItemsOrder,
         },
       };
     }
-    return {
-      items: todoStore.getFilteredItems(),
-      onComplete: todoStore.complete,
-    };
+    return baseProps;
   };
 
-  getTodoListFilterProps = (): TodoListFilterProps => {
-    return {
-      activeFilterType: todoStore.state.filterType,
-      completedItemCount: todoStore.completedItems.length,
-      incompleteItemCount: todoStore.incompleteItems.length,
-      onFilter: (filterType: FilterType) =>
-        todoStore.set({
-          filterType,
-        }),
-      onClear: todoStore.clearCompletedItems,
-    };
-  };
+  getTodoListFilterProps = (): TodoListFilterProps => ({
+    activeFilterType: todoStore.state.filterType,
+    completedItemCount: todoStore.completedItems.length,
+    incompleteItemCount: todoStore.incompleteItems.length,
+    onFilter: (filterType: FilterType) => todoStore.set({ filterType }),
+    onClear: todoStore.clearCompletedItems,
+  });
 
   mount() {
     const todoListItems = new TodoListItems(this.useSelector(this.listWrapper.selector)!, this.getTodoListItemsProps());
