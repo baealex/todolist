@@ -1,0 +1,27 @@
+.filter-area {
+    background: #f7f7f7;
+    border-top: 1px solid #eee;
+    display: flex;
+    padding: 16px;
+    font-size: 14px;
+    align-items: center;
+    justify-content: space-between;
+
+    .filter-buttons {
+        display: flex;
+        gap: 4px;
+    }
+
+    button {
+        cursor: pointer;
+        padding: 4px 16px;
+        background: #fff;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.04);
+        border-radius: 50px;
+        border: none;
+
+        &.active {
+            box-shadow: 0 0 0 1px #a076f1;
+        }
+    }
+}

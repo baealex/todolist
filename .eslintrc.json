@@ -1,0 +1,61 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "extends": [
+    "prettier",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "plugins": [
+    "import",
+    "prettier",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "semi": "error",
+    "import/no-unresolved": 0,
+    "no-console": "warn",
+    "no-undefined": "warn",
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowTernary": true, // a || b
+        "allowShortCircuit": true, // a ? b : 0
+        "allowTaggedTemplates": true
+      }
+    ],
+    "no-shadow": "warn",
+    "prettier/prettier": "error",
+    "max-nested-callbacks": ["error", 5],
+    "@typescript-eslint/no-explicit-any": "off"
+  },
+  "settings": {
+    "import/extensions": [".ts", ".js"],
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".js"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.ts", "**/*.test.js"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"],
+      "rules": {
+        "jest/prefer-expect-assertions": "off",
+        "jest/no-conditional-expect": "off"
+      }
+    }
+  ],
+  "env": {
+    "browser": true,
+    "es2021": true
+  }
+}

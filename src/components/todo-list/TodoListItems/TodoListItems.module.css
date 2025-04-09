@@ -1,0 +1,99 @@
+.todo-items {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    user-select: none;
+
+    .item {
+        padding: 16px;
+        background: #f7f7f7;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+        label {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .clickable-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox {
+            position: relative;
+            border: 1px solid #888;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+        }
+
+        .checkbox-icon {
+            display: none;
+            color: white;
+            position: absolute;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            top: 50%;
+            left: 50%;
+            align-items: center;
+            justify-content: center;
+            transform: translate(-50%, -50%);
+        }
+
+        &.is-complete {
+            span {
+                color: #888;
+                text-decoration: line-through;
+            }
+
+            .checkbox {
+                border: none;
+                background-color: #a076f1;
+            }
+
+            .checkbox-icon {
+                display: flex;
+            }
+        }
+
+        .drag-handler {
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            svg {
+                width: 20px;
+                color: #444;
+            }
+        }
+    
+        &:global(.drop-target) {
+            outline: 2px solid rgba(160, 118, 241, 0.5);
+        }
+    }
+}
+
+.empty,
+.error {
+    display: flex;
+    height: 180px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty {
+    color: #846fa7;
+}
+
+.error {
+    color: #e64646;
+}
