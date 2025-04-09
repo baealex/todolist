@@ -57,7 +57,7 @@ export class TodoListItems extends Component<TodoListItemsProps> {
     return `
       <ul class="${style['todo-items']}">
         ${Fallback.render({
-          fallback: ({ isEmpty, isError }) => {
+          fallbackRenderer: ({ isEmpty, isError }) => {
             if (isEmpty) {
               return `<div class="${style.empty}">There are no items here!</div>`;
             }
